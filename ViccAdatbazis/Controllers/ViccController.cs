@@ -2,7 +2,7 @@
 
 namespace ViccAdatbazis.Controllers
 {
-    public class Vicc : Controller
+    public class ViccController : Controller
     {
         public IActionResult Index()
         {
