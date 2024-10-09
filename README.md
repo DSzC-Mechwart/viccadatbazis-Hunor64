@@ -1,7 +1,8 @@
 # ViccAdatbazis
 Készíts Webalkalmazást viccek tárolására, megjelenítésére és értékelésére (tetszik vagy nem). Tároljuk el a feltöltő nevét is!</br>
 A főoldalon a viccek listája jelenik meg, oldalanként 10 db.</br>
-	Minden viccnél megjelenik: - Tartalom</br>
+	Minden viccnél megjelenik: </br>
+ &emsp;- Tartalom</br>
 				   &emsp;- Feltöltő</br>
 				   &emsp;- Hányan lájkolták ill. dislájkolták a viccet</br>
 				   &emsp;- Szerkesztési lehetőség</br>
