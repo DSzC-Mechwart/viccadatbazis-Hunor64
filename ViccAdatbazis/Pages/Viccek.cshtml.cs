@@ -25,5 +25,9 @@ namespace ViccAdatbazis.Pages
         {
             Vicc = await _context.Viccek.ToListAsync();
         }
+        public void Like() 
+        { 
+        
+        }
     }
 }
