@@ -1,12 +1,46 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ViccAdatbazis.Data;
+using ViccAdatbazis.Models;
 
 namespace ViccAdatbazis.Controllers
 {
-    public class ViccController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ViccController : ControllerBase
     {
-        public IActionResult Index()
+        private readonly ViccDbContext _context;
+
+        public ViccController(ViccDbContext context)
         {
-            return View();
+            _context = context;
+        }
+
+        [HttpPut("{id}/like")]
+        public async Task<IActionResult> LikeJoke(int id)
+        {
+            var joke = await _context.Viccek.FindAsync(id);
+            if (joke == null)
+            {
+                return NotFound();
+            }
+
+            joke.Tetszik++;
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
+        [HttpPut("{id}/dislike")]
+        public async Task<IActionResult> DislikeJoke(int id)
+        {
+            var joke = await _context.Viccek.FindAsync(id);
+            if (joke == null)
+            {
+                return NotFound();
+            }
+
+            joke.NemTetszik++;
+            await _context.SaveChangesAsync();
+            return NoContent();
         }
     }
 }
