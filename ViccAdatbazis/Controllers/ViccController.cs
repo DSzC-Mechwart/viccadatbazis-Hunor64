@@ -36,19 +36,57 @@ namespace ViccAdatbazis.Controllers
         }
 
         //Új vicc hozzáadása 
-        [HttpPost()]
+        [HttpPost]
         public async Task<ActionResult<Vicc>> PostVicc(Vicc vicc)
         {
             _context.Viccek.Add(vicc);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetVicc", new { id = vicc.Id }, vicc);
+            //return CreatedAtAction("GetVicc", new { id = vicc.Id }, vicc);
+
+            return Ok();
+        }
+
+        //Vicc módosítása
+        [HttpPut("{id}")]
+        public async Task<ActionResult> PutVicc(int id, Vicc vicc)
+        {
+            if (id != vicc.Id)
+            {
+                return BadRequest();
+            }
+            _context.Entry(vicc).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return Ok();
         }
 
 
+        //Vicc törlése
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteVicc(int id)
+        {
+            var vicc = await _context.Viccek.FindAsync(id);
+            if (vicc == null)
+            {
+                return NotFound();
+            }
+            if (vicc.Aktiv == true)
+            {
+                vicc.Aktiv = false;
+            }
+            else
+            {
+                _context.Viccek.Remove(vicc);
+            }
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
         // Vicc likeolása
         [HttpPut("{id}/like")]
-        public async Task<IActionResult> LikeJoke(int id)
+        public async Task<ActionResult> LikeJoke(int id)
         {
             var joke = await _context.Viccek.FindAsync(id);
             if (joke == null)
@@ -58,12 +96,12 @@ namespace ViccAdatbazis.Controllers
 
             joke.Tetszik++;
             await _context.SaveChangesAsync();
-            return NoContent();
+            return Ok();
         }
 
         //Vicc dislikeolása
         [HttpPut("{id}/dislike")]
-        public async Task<IActionResult> DislikeJoke(int id)
+        public async Task<ActionResult> DislikeJoke(int id)
         {
             var joke = await _context.Viccek.FindAsync(id);
             if (joke == null)
@@ -73,7 +111,7 @@ namespace ViccAdatbazis.Controllers
 
             joke.NemTetszik++;
             await _context.SaveChangesAsync();
-            return NoContent();
+            return Ok();
         }
     }
 }
