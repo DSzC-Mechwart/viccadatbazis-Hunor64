@@ -16,19 +16,25 @@ namespace ViccAdatbazis.Controllers
             _context = context;
         }
 
-        /*//Összes vicc lekérése
-        [HttpGet]
-        public ActionResult<List<Vicc>> GetViccek()
-        {
-            return _context.Viccek.Where(x => x.Aktiv == true).ToList();
-        }*/
-
         //Összes vicc lekérése async módon
         [HttpGet]
         public async Task<ActionResult<List<Vicc>>> GetViccek()
         {
             return await _context.Viccek.Where(x => x.Aktiv == true).ToListAsync();
         }
+
+        //Egy vicc lekérdezése
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Vicc>> GetVicc(int id)
+        {
+            var vicc = await _context.Viccek.FindAsync(id);
+            if (vicc == null)
+            {
+                return NotFound();
+            }
+            return vicc;
+        }
+
 
         [HttpPut("{id}/like")]
         public async Task<IActionResult> LikeJoke(int id)
