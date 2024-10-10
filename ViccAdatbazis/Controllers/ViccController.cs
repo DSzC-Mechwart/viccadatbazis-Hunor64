@@ -35,7 +35,18 @@ namespace ViccAdatbazis.Controllers
             return vicc;
         }
 
+        //Új vicc hozzáadása 
+        [HttpPost()]
+        public async Task<ActionResult<Vicc>> PostVicc(Vicc vicc)
+        {
+            _context.Viccek.Add(vicc);
+            await _context.SaveChangesAsync();
 
+            return CreatedAtAction("GetVicc", new { id = vicc.Id }, vicc);
+        }
+
+
+        // Vicc likeolása
         [HttpPut("{id}/like")]
         public async Task<IActionResult> LikeJoke(int id)
         {
@@ -50,6 +61,7 @@ namespace ViccAdatbazis.Controllers
             return NoContent();
         }
 
+        //Vicc dislikeolása
         [HttpPut("{id}/dislike")]
         public async Task<IActionResult> DislikeJoke(int id)
         {
