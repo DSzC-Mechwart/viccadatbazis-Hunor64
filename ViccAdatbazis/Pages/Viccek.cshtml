@@ -51,8 +51,8 @@
                     @Html.DisplayFor(modelItem => item.Aktiv)
                 </td>
                 <td>
-                    <button onclick="likeJoke(@item.Id)">👍</button>
-                    <button onclick="dislikeJoke(@item.Id)">👎</button>
+                    <button onclick="likeVicc(@item.Id)">👍</button>
+                    <button onclick="dislikeVicc(@item.Id)">👎</button>
                     <a asp-page="./Szerkesztes" asp-route-id="@item.Id">Szerkesztés</a> |
                     <a asp-page="./Torles" asp-route-id="@item.Id">Törlés</a>
                 </td>
