@@ -68,7 +68,7 @@ namespace ViccAdatbazis.Controllers
             {
                 return NotFound();
             }
-            if (vicc.Aktiv == true)
+            else if (vicc.Aktiv == true)
             {
                 vicc.Aktiv = false;
                 _context.Entry(vicc).State = EntityState.Modified;
@@ -83,31 +83,33 @@ namespace ViccAdatbazis.Controllers
         }
 
         // Vicc likeolása
-        [HttpPut("{id}/like")]
-        public async Task<ActionResult> LikeJoke(int id)
+
+        [HttpPatch("{id}/like")]
+        public async Task<ActionResult> LikeVicc(int id)
         {
             var joke = await _context.Viccek.FindAsync(id);
             if (joke == null)
             {
                 return NotFound();
             }
-
             joke.Tetszik++;
+            _context.Entry(joke).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return Ok();
         }
 
         //Vicc dislikeolása
-        [HttpPut("{id}/dislike")]
-        public async Task<ActionResult> DislikeJoke(int id)
+        [HttpPatch("{id}/dislike")]
+        public async Task<ActionResult> DislikeVicc(int id)
         {
             var joke = await _context.Viccek.FindAsync(id);
             if (joke == null)
             {
                 return NotFound();
             }
-
+            
             joke.NemTetszik++;
+            _context.Entry(joke).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return Ok();
         }
