@@ -16,7 +16,7 @@ namespace ViccAdatbazis.Controllers
             _context = context;
         }
 
-        //Összes vicc lekérése async módon
+        //Nem archivált vicc lekérése async módon
         [HttpGet]
         public async Task<ActionResult<List<Vicc>>> GetViccek()
         {
@@ -84,7 +84,6 @@ namespace ViccAdatbazis.Controllers
         }
 
         // Vicc likeolása
-
         [HttpPatch("{id}/like")]
         public async Task<ActionResult> LikeVicc(int id)
         {
