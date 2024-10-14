@@ -41,9 +41,6 @@ namespace ViccAdatbazis.Controllers
         {
             _context.Viccek.Add(vicc);
             await _context.SaveChangesAsync();
-
-            //return CreatedAtAction("GetVicc", new { id = vicc.Id }, vicc);
-
             return Ok();
         }
 
@@ -74,6 +71,7 @@ namespace ViccAdatbazis.Controllers
             if (vicc.Aktiv == true)
             {
                 vicc.Aktiv = false;
+                _context.Entry(vicc).State = EntityState.Modified;
             }
             else
             {

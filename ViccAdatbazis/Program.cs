@@ -8,6 +8,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ViccDbContext>(
     options => options.UseSqlite(connectionString: @"Data Source = .\Data\ViccAdatbazis.db"));
 
+builder.Services.AddControllers();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,5 +28,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.MapControllers();
 
 app.Run();
