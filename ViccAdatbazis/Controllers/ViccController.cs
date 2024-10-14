@@ -32,6 +32,7 @@ namespace ViccAdatbazis.Controllers
             {
                 return NotFound();
             }
+
             return vicc;
         }
 
@@ -95,6 +96,7 @@ namespace ViccAdatbazis.Controllers
             joke.Tetszik++;
             _context.Entry(joke).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+
             return Ok();
         }
 
@@ -111,6 +113,7 @@ namespace ViccAdatbazis.Controllers
             joke.NemTetszik++;
             _context.Entry(joke).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+
             return Ok();
         }
     }
