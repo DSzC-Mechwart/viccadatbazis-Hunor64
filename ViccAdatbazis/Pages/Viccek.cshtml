@@ -36,7 +36,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Tartalom)
+                        @Html.DisplayFor(modelItem => item.Tartalom)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Feltolto)
@@ -45,10 +45,14 @@
                     @Html.DisplayFor(modelItem => item.Tetszik)
                 </td>
                 <td>
+                    <span id="tetszikDb">
                     @Html.DisplayFor(modelItem => item.NemTetszik)
+                    </span>
                 </td>
                 <td>
+                    <span id="newTetszikDb">
                     @Html.DisplayFor(modelItem => item.Aktiv)
+                    </span>
                 </td>
                 <td>
                     <button onclick="likeVicc(@item.Id)">👍</button>

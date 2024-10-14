@@ -9,6 +9,7 @@ function likeVicc(id) {
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
             console.log(this.responseText);
+            //document.querySelector("#tetszikDb")[0].innerHTML = this.responseText
         }
     });
 
@@ -24,6 +25,7 @@ function dislikeVicc(id) {
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
             console.log(this.responseText);
+            //document.querySelector("#nemTetszikDb")[0].innerHTML = this.responseText
         }
     });
 
