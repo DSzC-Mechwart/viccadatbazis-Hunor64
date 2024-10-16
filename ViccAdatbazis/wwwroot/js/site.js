@@ -1,7 +1,6 @@
 ﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
-// Write your JavaScript code.
 function likeVicc(id) {
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
@@ -9,7 +8,10 @@ function likeVicc(id) {
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
             console.log(this.responseText);
-            //document.querySelector("#tetszikDb")[0].innerHTML = this.responseText
+            var tetszikDbElement = document.getElementById("tetszikDb");
+            if (tetszikDbElement) {
+                tetszikDbElement.innerHTML = this.responseText;
+            }
         }
     });
 
@@ -25,7 +27,13 @@ function dislikeVicc(id) {
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
             console.log(this.responseText);
-            //document.querySelector("#nemTetszikDb")[0].innerHTML = this.responseText
+            var nemTetszikDbElement = document.getElementById("newTetszikDb");
+            if (nemTetszikDbElement) {
+                nemTetszikDbElement.innerHTML = this.responseText;
+            }
+            else {
+
+            }
         }
     });
 
