@@ -42,12 +42,12 @@
                     @Html.DisplayFor(modelItem => item.Feltolto)
                 </td>
                 <td>
-                    <span id="tetszikDb">
+                    <span id="tetszikDb_@item.Id">
                     @Html.DisplayFor(modelItem => item.Tetszik)
                     </span>
                 </td>
                 <td>
-                    <span id="newTetszikDb">
+                    <span id="newTetszikDb_@item.Id">
                     @Html.DisplayFor(modelItem => item.NemTetszik)
                     </span>
                 </td>
