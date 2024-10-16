@@ -19,15 +19,15 @@ namespace ViccAdatbazis.Pages
             _context = context;
         }
 
-        public IList<Vicc> Vicc { get;set; } = default!;
+        public IList<Vicc> Vicc { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
             Vicc = await _context.Viccek.ToListAsync();
         }
-        public void Like() 
-        { 
-        
+        public void Like()
+        {
+
         }
     }
 }

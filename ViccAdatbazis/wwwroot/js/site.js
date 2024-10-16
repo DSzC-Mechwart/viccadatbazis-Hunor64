@@ -8,7 +8,7 @@ function likeVicc(id) {
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
             console.log(this.responseText);
-            var tetszikDbElement = document.getElementById("tetszikDb");
+            var tetszikDbElement = document.getElementById("tetszikDb_" + id);
             if (tetszikDbElement) {
                 tetszikDbElement.innerHTML = this.responseText;
             }
@@ -27,12 +27,9 @@ function dislikeVicc(id) {
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
             console.log(this.responseText);
-            var nemTetszikDbElement = document.getElementById("newTetszikDb");
+            var nemTetszikDbElement = document.getElementById("newTetszikDb_" + id);
             if (nemTetszikDbElement) {
                 nemTetszikDbElement.innerHTML = this.responseText;
-            }
-            else {
-
             }
         }
     });

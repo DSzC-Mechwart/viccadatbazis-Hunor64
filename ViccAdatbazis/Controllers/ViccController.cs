@@ -109,7 +109,7 @@ namespace ViccAdatbazis.Controllers
             {
                 return NotFound();
             }
-            
+
             joke.NemTetszik++;
             _context.Entry(joke).State = EntityState.Modified;
             await _context.SaveChangesAsync();

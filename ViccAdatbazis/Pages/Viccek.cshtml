@@ -36,19 +36,19 @@
         {
             <tr>
                 <td>
-                        @Html.DisplayFor(modelItem => item.Tartalom)
+                    @Html.DisplayFor(modelItem => item.Tartalom)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Feltolto)
                 </td>
                 <td>
-                    <span id="tetszikDb">
-                    @Html.DisplayFor(modelItem => item.Tetszik)
+                    <span id="tetszikDb_@item.Id">
+                        @Html.DisplayFor(modelItem => item.Tetszik)
                     </span>
                 </td>
                 <td>
-                    <span id="newTetszikDb">
-                    @Html.DisplayFor(modelItem => item.NemTetszik)
+                    <span id="newTetszikDb_@item.Id">
+                        @Html.DisplayFor(modelItem => item.NemTetszik)
                     </span>
                 </td>
                 <td>
