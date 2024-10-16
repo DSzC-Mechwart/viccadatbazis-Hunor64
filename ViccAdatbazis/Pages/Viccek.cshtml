@@ -42,17 +42,17 @@
                     @Html.DisplayFor(modelItem => item.Feltolto)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Tetszik)
-                </td>
-                <td>
                     <span id="tetszikDb">
-                    @Html.DisplayFor(modelItem => item.NemTetszik)
+                    @Html.DisplayFor(modelItem => item.Tetszik)
                     </span>
                 </td>
                 <td>
                     <span id="newTetszikDb">
-                    @Html.DisplayFor(modelItem => item.Aktiv)
+                    @Html.DisplayFor(modelItem => item.NemTetszik)
                     </span>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aktiv)
                 </td>
                 <td>
                     <button onclick="likeVicc(@item.Id)">👍</button>
