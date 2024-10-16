@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 using ViccAdatbazis.Data;
 using ViccAdatbazis.Models;
 
@@ -85,7 +86,7 @@ namespace ViccAdatbazis.Controllers
 
         // Vicc likeolása
         [HttpPatch("{id}/like")]
-        public async Task<ActionResult> LikeVicc(int id)
+        public async Task<ActionResult<string>> LikeVicc(int id)
         {
             var joke = await _context.Viccek.FindAsync(id);
             if (joke == null)
@@ -96,12 +97,12 @@ namespace ViccAdatbazis.Controllers
             _context.Entry(joke).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
-            return Ok();
+            return Ok(joke.Tetszik);
         }
 
         //Vicc dislikeolása
         [HttpPatch("{id}/dislike")]
-        public async Task<ActionResult> DislikeVicc(int id)
+        public async Task<ActionResult<string>> DislikeVicc(int id)
         {
             var joke = await _context.Viccek.FindAsync(id);
             if (joke == null)
@@ -113,7 +114,7 @@ namespace ViccAdatbazis.Controllers
             _context.Entry(joke).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
-            return Ok();
+            return Ok(joke.NemTetszik);
         }
     }
 }
